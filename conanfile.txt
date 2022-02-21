@@ -1,0 +1,5 @@
+[requires]
+libcbor/0.9.0
+
+[generators]
+compiler_args
