@@ -26,6 +26,7 @@ the configurations that use gcc as the compiler has Linux as the OS.
 
 To create a new Conan profile, use the command ``conan profile new <ProfileName>``.
 
+Recall that all Conan profiles can be found at ``<userhome>/.conan/profiles``.
 
 1. Install the CBOR Conan package with ``conan install . --profile gccProfile``.
 	
@@ -36,8 +37,11 @@ To create a new Conan profile, use the command ``conan profile new <ProfileName>
 #. Compile the binary with ``gcc src/main.c '@conanbuildinfo.args' -o bin/main``.
 
 	- The file ``conanbuildinfo.args`` is created from the ``compiler_args`` generator in the
-	  conanfile; ``conanbuildinfo.args`` contains command line arguments for ``gcc``, ``clang``, and
-	  ``cl``. This allows the use of the previous compilers in compiling the program.
+	  conanfile; ``conanbuildinfo.args`` contains command line arguments for ``gcc``, ``clang``,
+	  and ``cl``. This allows the use of the previous compilers in compiling the program.
 
 Third-Party Tools
 -----------------
+
+- Conan:
+- gcc:

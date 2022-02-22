@@ -1,4 +1,9 @@
-cmake-build-debug/
-.idea/
-
+# Executables
 bin/
+
+# Conan files
+conan.lock
+conanbuildinfo.args
+conanbuildinfo.txt
+conaninfo.txt
+graph_info.json
