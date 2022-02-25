@@ -7,3 +7,6 @@ conanbuildinfo.args
 conanbuildinfo.txt
 conaninfo.txt
 graph_info.json
+
+# Python virtual environment
+.venv/

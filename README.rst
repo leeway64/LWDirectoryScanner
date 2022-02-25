@@ -34,7 +34,7 @@ Recall that all Conan profiles can be found at ``<userhome>/.conan/profiles``.
 	  ``--profile <ProfileName>``.
 
 
-#. Compile the binary with ``gcc src/main.c '@conanbuildinfo.args' -o bin/main``.
+#. Compile the binary with ``gcc src/main.c src/scanner_helpers.h src/scanner_helpers.c '@conanbuildinfo.args' -o bin/main``.
 
 	- The file ``conanbuildinfo.args`` is created from the ``compiler_args`` generator in the
 	  conanfile; ``conanbuildinfo.args`` contains command line arguments for ``gcc``, ``clang``,

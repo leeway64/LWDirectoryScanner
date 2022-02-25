@@ -3,8 +3,12 @@
 #include "scanner_helpers.h"
 
 
-void printDirectory()
+void printDirectory(char* dirName, int level)
 {
+	for (int i = 0; i < level; ++i)
+	{
+		printf("    ");
+	}
 	printf("tree\n");
 }
 

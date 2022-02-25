@@ -2,13 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <cbor.h>
+#include "cbor.h"
+//#include "cbor/maps.h"
 
 #include "scanner_helpers.h"
 
+
 int main(int argc, char** argv)
 {
-	if
+	// Preallocate the map structure
+	cbor_item_t * root = cbor_new_definite_map(2);
+
 	if (argc == 3)
 	{
 		char* secondArgument = argv[1];
@@ -16,7 +20,7 @@ int main(int argc, char** argv)
 		if (!strcmp(secondArgument, treeCommand))
 		{
 			printf("tree activated: %s\n", argv[1]);
-			printDirectory();
+			//printDirectory();
 		}
 		else
 		{
@@ -34,7 +38,7 @@ int main(int argc, char** argv)
 			printf("help activated: %s\n", argv[1]);
 			printHelp();
 		}
-		else if (1 /*check if the second argument is a directory that exists*/)
+		else if (0 /*check if the second argument is a directory that exists*/)
 		{
 			
 		}
