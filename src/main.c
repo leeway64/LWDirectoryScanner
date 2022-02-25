@@ -3,7 +3,6 @@
 #include <string.h>
 
 #include "cbor.h"
-//#include "cbor/maps.h"
 
 #include "scanner_helpers.h"
 
@@ -24,7 +23,7 @@ int main(int argc, char** argv)
 		}
 		else
 		{
-			printf("Incorrect command! See --help for more details\n");			
+			printf("Incorrect command! Run with --help for more information.\n");			
 		}
 	}
 	
@@ -35,7 +34,6 @@ int main(int argc, char** argv)
 		
 		if (!strcmp(secondArgument, helpCommand))
 		{
-			printf("help activated: %s\n", argv[1]);
 			printHelp();
 		}
 		else if (0 /*check if the second argument is a directory that exists*/)
@@ -44,8 +42,13 @@ int main(int argc, char** argv)
 		}
 		else
 		{
-			printf("Incorrect command! See --help for more details\n");			
+			printf("Incorrect command! Run with --help for more information.\n");			
 		}		
+	}
+	
+	if (argc == 1)
+	{
+		printf("Incorrect command! Run with --help for more information.\n");					
 	}
 	
     printf("This program has %d arguments: \n", argc);

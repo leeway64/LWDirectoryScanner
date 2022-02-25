@@ -1,5 +1,7 @@
 [requires]
 libcbor/0.9.0
+tinydir/1.2.4
+cunit/2.1.3
 
 [generators]
 compiler_args

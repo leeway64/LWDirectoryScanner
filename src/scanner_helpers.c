@@ -14,5 +14,7 @@ void printDirectory(char* dirName, int level)
 
 void printHelp()
 {
-	printf("help\n");	
+	printf("Usage: LWDirectoryScanner [OPTIONS]\n");
+	printf("Options:\n");
+	printf("    --tree <DIRECTORY>    Print out the contents of <DIRECTORY>");
 }

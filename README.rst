@@ -1,13 +1,21 @@
 LWDirectoryScanner
 ==================
 
+LWDirectoryScanner is a C CLI for analyzing the contents of a given directory.
+
+Example
+--------
+
+Usage
+-------
+
 Installation
 ------------
 
-Because I am using gcc to compile this program, there needs to be a specific Conan profile (I have
+Because I am using ``gcc`` to compile this program, there needs to be a specific Conan profile (I have
 called my profile gccProfile). gccProfile might look something like this:
 
-..code-block::
+.. code-block::
 
    [settings]
 	   arch=x86_64
@@ -21,8 +29,8 @@ called my profile gccProfile). gccProfile might look something like this:
    [env]
 
 I need to use this specific Conan profile because, according to
-`the libcbor ConanCenter page`<https://conan.io/center/libcbor?os=Linux&tab=configuration>_, all
-the configurations that use gcc as the compiler has Linux as the OS.
+`the libcbor ConanCenter page <https://conan.io/center/libcbor?os=Linux&tab=configuration>`_, all
+the configurations that use ``gcc`` as the compiler has Linux as the OS.
 
 To create a new Conan profile, use the command ``conan profile new <ProfileName>``.
 
@@ -45,3 +53,6 @@ Third-Party Tools
 
 - Conan:
 - gcc:
+- libcbor
+- tinydir: 
+- cunit: 
