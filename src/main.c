@@ -10,7 +10,7 @@
 int main(int argc, char** argv)
 {
 	// Preallocate the map structure
-	cbor_item_t * root = cbor_new_definite_map(2);
+	//cbor_item_t * root = cbor_new_definite_map(2);
 
 	if (argc == 3)
 	{

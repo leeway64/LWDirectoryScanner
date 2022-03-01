@@ -9,8 +9,8 @@ Example
 Usage
 -------
 
-Installation
-------------
+Installing LWDirectoryScanner
+------------------------------
 
 Because I am using ``gcc`` to compile this program, there needs to be a specific Conan profile (I have
 called my profile gccProfile). gccProfile might look something like this:
@@ -42,17 +42,30 @@ Recall that all Conan profiles can be found at ``<userhome>/.conan/profiles``.
 	  ``--profile <ProfileName>``.
 
 
-#. Compile the binary with ``gcc src/main.c src/scanner_helpers.h src/scanner_helpers.c '@conanbuildinfo.args' -o bin/main``.
+#. If you are using a Linux machine, compile the binary with ``gcc src/main.c src/scanner_helpers.h src/scanner_helpers.c '@conanbuildinfo.args' -o bin/main``.
+   If you are using a Windows machine, compile the binary with ``cl /EHsc src/main.c src/scanner_helpers.c @conanbuildinfo.args -o bin/main``
 
 	- The file ``conanbuildinfo.args`` is created from the ``compiler_args`` generator in the
 	  conanfile; ``conanbuildinfo.args`` contains command line arguments for ``gcc``, ``clang``,
 	  and ``cl``. This allows the use of the previous compilers in compiling the program.
+	
+	- Refer to `this guide <docs/C_compilation_process.rst>`_ for more information on what exactly
+	  happens when a C program is compiled.
+
+
+Running Tests
+--------------
+
+1. If you are using a Linux machine, compile the test binary with ````.
+   If you are using a Windows machine, compile the test binary with ````.
+
+#. To run the test binary, simply enter ````.
+
 
 Third-Party Tools
 -----------------
 
 - Conan:
-- gcc:
 - libcbor
 - tinydir: 
 - cunit: 
