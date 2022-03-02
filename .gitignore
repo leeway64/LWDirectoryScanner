@@ -8,8 +8,9 @@ conanbuildinfo.txt
 conaninfo.txt
 graph_info.json
 
-# Python virtual environment
+# Python files
 .venv/
+__pycache__/
 
 # Compiled object files
 *.obj

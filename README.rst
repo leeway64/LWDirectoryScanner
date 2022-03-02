@@ -43,6 +43,7 @@ Recall that all Conan profiles can be found at ``<userhome>/.conan/profiles``.
 
 
 #. If you are using a Linux machine, compile the binary with ``gcc src/main.c src/scanner_helpers.h src/scanner_helpers.c '@conanbuildinfo.args' -o bin/main``.
+   
    If you are using a Windows machine, compile the binary with ``cl /EHsc src/main.c src/scanner_helpers.c @conanbuildinfo.args -o bin/main``
 
 	- The file ``conanbuildinfo.args`` is created from the ``compiler_args`` generator in the
@@ -56,10 +57,20 @@ Recall that all Conan profiles can be found at ``<userhome>/.conan/profiles``.
 Running Tests
 --------------
 
+Running LWDirectoryScanner Tests
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 1. If you are using a Linux machine, compile the test binary with ````.
+   
    If you are using a Windows machine, compile the test binary with ````.
 
 #. To run the test binary, simply enter ````.
+
+
+Running CBOR Deserializer Tests
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 
 
 Third-Party Tools

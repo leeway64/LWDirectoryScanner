@@ -2,7 +2,7 @@ C Compilation Process
 =======================
 
 The following steps outline the process for compiling a C program (from 
-`How the Compilation Process Works for C Programs <https://medium.datadriveninvestor.com/compilation-process-db17c3b58e62>_`).
+`How the Compilation Process Works for C Programs <https://medium.datadriveninvestor.com/compilation-process-db17c3b58e62>`_).
 
 .. contents:: **Table of Contents**
 
