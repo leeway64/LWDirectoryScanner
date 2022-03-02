@@ -8,10 +8,10 @@ class CBOR_deserializer:
     @property
     def deserialized_data(self):
         # Lazily load the deserialized data
-        if self._deserialized_data:
-            return self._deserialized_data
-        else:
+        if not self._deserialized_data:
             self._deserialized_data = self.__deserialize()
+
+        return self._deserialized_data
 
     @property
     def CBOR_file_name(self):
