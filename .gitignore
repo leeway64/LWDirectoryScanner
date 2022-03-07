@@ -1,5 +1,8 @@
 # Executables
-bin/
+*.exe
+
+# Compiled object files
+*.obj
 
 # Conan files
 conan.lock
@@ -12,5 +15,3 @@ graph_info.json
 .venv/
 __pycache__/
 
-# Compiled object files
-*.obj
