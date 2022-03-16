@@ -2,17 +2,36 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "cbor.h"
+#include <cbor.h>
+#include <tinydir.h>
 
 #include "scanner_helpers.h"
 
 
 int main(int argc, char** argv)
 {
+	tinydir_dir dir;
+	tinydir_open(&dir, "C:\\Users\\leewa\\Documents\\Important documents\\Financial Records");
+
+	while (dir.has_next)
+	{
+		tinydir_file file;
+		tinydir_readfile(&dir, &file);
+
+		printf("%s", file.name);
+		if (file.is_dir)
+		{
+			printf("/");
+		}
+		printf("\n");
+
+		tinydir_next(&dir);
+	}
+
+	tinydir_close(&dir);/*
 	// Preallocate the map structure
-	/* Preallocate the map structure */
 	cbor_item_t * root = cbor_new_definite_map(2);
-	/* Add the content */
+	//Add the content
 	cbor_map_add(root, (struct cbor_pair) {
 		.key = cbor_move(cbor_build_string("Is CBOR awesome?")),
 		.value = cbor_move(cbor_build_bool(true))
@@ -21,7 +40,7 @@ int main(int argc, char** argv)
 		.key = cbor_move(cbor_build_uint8(42)),
 		.value = cbor_move(cbor_build_string("Is the answer"))
 	});
-	/* Output: `length` bytes of data in the `buffer` */
+	//Output: `length` bytes of data in the `buffer`
 	unsigned char * buffer;
 	size_t buffer_size,
 		length = cbor_serialize_alloc(root, &buffer, &buffer_size);
@@ -31,6 +50,7 @@ int main(int argc, char** argv)
 
 	fflush(stdout);
 	cbor_decref(&root);
+	*/
 	/*
 	if (argc == 3)
 	{

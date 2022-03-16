@@ -26,13 +26,13 @@ Installing LWDirectoryScanner
 	  happens when a C program is compiled.
 
 
-=========================================================================================
-Helpful Conan tips
---------------------------------------------------------------------------------------------
-To create a new Conan profile, use the command ``conan profile new <ProfileName>``.
-
-Recall that all Conan profiles can be found at ``<userhome>/.conan/profiles``.
-==========================================================================================
++-----------------------------------------------------------------------------------------+
+|Helpful Conan Tips                                                                       |
++=========================================================================================+
+| To create a new Conan profile, use the command ``conan profile new <ProfileName>``.     |
+|                                                                                         |
+| Recall that all Conan profiles can be found at ``<userhome>/.conan/profiles``.          |
++-----------------------------------------------------------------------------------------+
 
 
 Running Tests
@@ -51,13 +51,18 @@ Running LWDirectoryScanner Tests
 Running CBOR Deserializer Tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+In the root directory of this project, run:
 
+.. code-block::
+
+    $ .venv/Scripts/activate
+    $ pytest
 
 
 Third-Party Tools
 -----------------
 
-- Conan:
-- libcbor
-- tinydir: 
-- cunit: 
+- `Conan <https://conan.io/>`_ (MIT License): Package manager.
+- `libcbor <https://github.com/PJK/libcbor>`_ (MIT License): C library for serializing and deserializing CBOR files.
+- `tinydir <https://github.com/cxong/tinydir>`_ (BSD-2-Clause): C directory and file reader.
+- `cunit <http://cunit.sourceforge.net/>`_ (BSD-3-Clause): Unit testing framework.
