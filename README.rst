@@ -43,9 +43,9 @@ Running LWDirectoryScanner Tests
 
 1. If you are using a Linux machine, compile the test binary with ````.
    
-   If you are using a Windows machine, compile the test binary with ````.
+   - If you are using a Windows machine, compile the test binary with ````.
 
-#. To run the test binary, simply enter ````.
+#. To run the test binary, enter ```` if using Linux. If using Windows, enter `cd tests`, then ``.
 
 
 Running CBOR Deserializer Tests
