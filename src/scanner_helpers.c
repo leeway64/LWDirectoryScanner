@@ -15,10 +15,12 @@ void printDirectoryDriver(char* dirName)
         printf("Directory selected: %s/\n", dirName);
         printDirectory(dir, 1);
     }
+    tinydir_close(&dir);
 }
 
 void printDirectory(tinydir_dir dir, int level)
 {
+    tinydir_dir original_dir = dir;
     while (dir.has_next)
     {
         tinydir_file file;
@@ -36,34 +38,14 @@ void printDirectory(tinydir_dir dir, int level)
             }
             printf("\n");
 
-//            if (file.is_dir) {
-//                printDirectory(dir, level + 1);
-//            }
+            if (file.is_dir) {
+                tinydir_open(&dir, file.path);
+                printDirectory(dir, level + 1);
+                dir = original_dir;
+            }
         }
         tinydir_next(&dir);
     }
-    tinydir_close(&dir);
-
-
-
-//    if (strcmp(file.name, ".") != 0 && strcmp(file.name, "..") != 0)
-//    {
-//        printf("%s", file.name);
-//        if (file.is_dir)
-//        {
-//            printf("/");
-//        }
-//        printf("\n");
-//    }
-//
-//    if (file.is_dir)
-//    {
-//        tinydir_readfile(&dir, &file);
-//        for (1; 1; 1)
-//        {
-//            printDirectory(, level + 1);
-//        }
-//    }
 }
 
 void printHelp()

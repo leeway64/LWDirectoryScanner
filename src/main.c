@@ -10,25 +10,16 @@
 
 int main(int argc, char** argv)
 {
-//	tinydir_dir dir;
-////	tinydir_open(&dir, "C:\\Users\\leewa\\Documents\\Important documents\\Financial Records");
-//    tinydir_open(&dir, "C:\\Users\\leewa\\Documents\\Important documents\\Compuhfdsjfhdskjfhsdkjfsdklfjdslkfter Science\\C_Projects\\LWDirectoryScanner\\tests");
-//	while (dir.has_next)
-//	{
-//		tinydir_file file;
-//		tinydir_readfile(&dir, &file);
+//    tinydir_file file;
 //
-//		printf("%s", file.name);
-//		if (file.is_dir)
-//		{
-//			printf("/");
-//		}
-//		printf("\n");
-//
-//		tinydir_next(&dir);
-//	}
-//
-//	tinydir_close(&dir);
+//    if (tinydir_file_open(&file, "C:\\Users\\leewa\\Documents\\Important documents\\Computer Science\\C_Projects\\LWDirectoryScanner\\tests\\test_dirs\\a") == -1)
+//    {
+//        perror("Error opening file");
+//        return 1;
+//    }
+//    printf("Path: %s\nName: %s\nExtension: %s\nIs dir? %s\nIs regular file? %s\n",
+//           file.path, file.name, file.extension,
+//           file.is_dir?"yes":"no", file.is_reg?"yes":"no");
     printDirectoryDriver("C:\\Users\\leewa\\Documents\\Important documents\\Computer Science\\C_Projects\\LWDirectoryScanner\\tests\\test_dirs");
 
 
