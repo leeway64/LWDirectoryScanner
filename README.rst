@@ -27,7 +27,7 @@ You can also build LWDirectoryScanner on your own machine.
    ``gcc src/main.c src/scanner_helpers.h src/scanner_helpers.c '@conanbuildinfo.args' -o bin/LWDirectoryScanner``.
    
    - If you are using a Windows machine, compile the binary with
-     ``cl /EHsc src/main.c src/scanner_helpers.c @conanbuildinfo.args /link /out:bin/LWDirectoryScanner``
+     ``cl /EHsc src/main.c src/scanner_helpers.c @conanbuildinfo.args /link /out:bin/LWDirectoryScanner.exe``
 
 	 - The file ``conanbuildinfo.args`` is created from the ``compiler_args`` generator in the
 	   conanfile; ``conanbuildinfo.args`` contains command line arguments for ``gcc``, ``clang``,
@@ -57,8 +57,8 @@ Running LWDirectoryScanner Tests
    - If you are using a Windows machine, compile the test binary with
      ``cl Unity/src/unity.c tests/test_suite.c /link /out:tests/test_suite.exe``.
 
-#. To run the test binary, enter ```` if using Linux. If using Windows, enter `cd tests`, then
-   `test_suite`.
+#. To run the test binary, enter ```` if using Linux. If using Windows, enter ``cd tests``, then
+   ``test_suite``.
 
 
 Running CBOR Deserializer Tests

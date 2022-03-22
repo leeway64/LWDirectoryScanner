@@ -3,7 +3,7 @@
 
 void printDirectoryDriver(char* dirName);
 
-void printDirectory(char* dirName, int level);
+void printDirectory(tinydir_dir dir, int level);
 
 void printHelp();
 

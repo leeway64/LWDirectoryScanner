@@ -10,25 +10,30 @@
 
 int main(int argc, char** argv)
 {
-	tinydir_dir dir;
-	tinydir_open(&dir, "C:\\Users\\leewa\\Documents\\Important documents\\Financial Records");
+//	tinydir_dir dir;
+////	tinydir_open(&dir, "C:\\Users\\leewa\\Documents\\Important documents\\Financial Records");
+//    tinydir_open(&dir, "C:\\Users\\leewa\\Documents\\Important documents\\Compuhfdsjfhdskjfhsdkjfsdklfjdslkfter Science\\C_Projects\\LWDirectoryScanner\\tests");
+//	while (dir.has_next)
+//	{
+//		tinydir_file file;
+//		tinydir_readfile(&dir, &file);
+//
+//		printf("%s", file.name);
+//		if (file.is_dir)
+//		{
+//			printf("/");
+//		}
+//		printf("\n");
+//
+//		tinydir_next(&dir);
+//	}
+//
+//	tinydir_close(&dir);
+    printDirectoryDriver("C:\\Users\\leewa\\Documents\\Important documents\\Computer Science\\C_Projects\\LWDirectoryScanner\\tests\\test_dirs");
 
-	while (dir.has_next)
-	{
-		tinydir_file file;
-		tinydir_readfile(&dir, &file);
 
-		printf("%s", file.name);
-		if (file.is_dir)
-		{
-			printf("/");
-		}
-		printf("\n");
 
-		tinydir_next(&dir);
-	}
-
-	tinydir_close(&dir);/*
+    /*
 	// Preallocate the map structure
 	cbor_item_t * root = cbor_new_definite_map(2);
 	//Add the content
@@ -51,6 +56,9 @@ int main(int argc, char** argv)
 	fflush(stdout);
 	cbor_decref(&root);
 	*/
+
+
+
 	/*
 	if (argc == 3)
 	{
