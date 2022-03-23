@@ -3,6 +3,19 @@
 
 #include "scanner_helpers.h"
 
+// This is a struct of structs
+// typedef simplifies syntax for declaring variables
+typedef struct dirSummary
+{
+    unsigned int deepestDepth;
+    struct counts  // I declare a new struct here...
+    {
+        unsigned int files;
+        unsigned int directories;
+    } counts;  // But I'm initializing a new variable here.
+
+} dirSummary;
+
 void printDirectoryDriver(const char* dirName)
 {
     tinydir_dir dir;
@@ -19,7 +32,7 @@ void printDirectoryDriver(const char* dirName)
     tinydir_close(&dir);
 }
 
-void printDirectory(tinydir_dir dir, int level)
+void printDirectory(tinydir_dir dir, unsigned int level)
 {
     tinydir_dir original_dir = dir;
     while (dir.has_next)
@@ -53,28 +66,63 @@ void printDirectory(tinydir_dir dir, int level)
     }
 }
 
-void scanDirectory()
+struct dirSummary scanDirectory(tinydir_dir dir)
 {
-    register dirSummary;
-    
+    // "register" keyword tells compiler to store variable in CPU instead of in memory. This allows
+    // for faster access.
+    register dirSummary summary;
+    summary.deepestDepth = countDirDepth();
+    summary.counts.files = countNumberOfFiles();
+    summary.counts.directories = countNumberOfDirs();
+    return summary;
 }
 
-unsigned int countDirDepth()
+static unsigned int countDirDepth()
+{
+//    tinydir_dir original_dir = dir;
+//    while (dir.has_next)
+//    {
+//        tinydir_file file;
+//        tinydir_readfile(&dir, &file);
+//        if (strcmp(file.name, ".") != 0 && strcmp(file.name, "..") != 0)
+//        {
+//            // Print indentation
+//            for (int i = 0; i < level; ++i)
+//            {
+//                printf("    ");
+//            }
+//
+//            printf("%s", file.name);
+//            if (file.is_dir)
+//            {
+//                printf("/");
+//            }
+//            printf("\n");
+//
+//            if (file.is_dir) {
+//                // Set the name of dir to the file path
+//                tinydir_open(&dir, file.path);
+//                printDirectory(dir, level + 1);
+//                // Set dir back to what it was before recursion
+//                dir = original_dir;
+//            }
+//        }
+//        tinydir_next(&dir);
+//    }
+    return 0;
+}
+
+static unsigned int countNumberOfFiles()
 {
     return 0;
 }
 
-unsigned int countNumberOfFiles()
+static unsigned int countNumberOfDirs()
 {
     return 0;
 }
 
-unsigned int countNumberOfDirs()
-{
-    return 0;
-}
-
-void serialize()
+void serialize(dirSummary summary)
 {
 	// Preallocate the map structure
 	cbor_item_t * root = cbor_new_definite_map(2);
@@ -106,11 +154,3 @@ void printHelp()
 	printf("    <DIRECTORY>           Scans <DIRECTORY> and serializes a summary of the directory statistics into a CBOR file.");
 	printf("    --tree <DIRECTORY>    Print out the contents of <DIRECTORY>.");
 }
-
-// typedef simplifies syntax for declaring variables
-typedef struct dirSummary
-{
-    unsigned int deepestDepth;
-    unsigned int files;
-    unsigned int directories;
-};

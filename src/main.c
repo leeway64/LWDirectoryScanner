@@ -7,7 +7,7 @@
 int main(int argc, char** argv)
 {
 //    printDirectoryDriver("C:\\Users\\leewa\\Documents\\Important documents\\Computer Science\\C_Projects\\LWDirectoryScanner\\tests\\test_dirs");
-    serialize();
+//    serialize();
 	/*
 	if (argc == 3)
 	{
@@ -28,14 +28,19 @@ int main(int argc, char** argv)
 	{
 		char* secondArgument = argv[1];
 		char* helpCommand = "--help";
-		
+
+	    tinydir_dir dir;
+        signed int open_dir = tinydir_open(&dir, secondArgument);
 		if (!strcmp(secondArgument, helpCommand))
 		{
 			printHelp();
 		}
-		else if (0 /*check if the second argument is a directory that exists)
+		else if (open_dir != -1)
 		{
-			
+			dirSummary summary = scanDirectory();
+			printf("\tDeepest folder depth: %i\n", summary.deepestDepth);
+			printf("\tNumber of directories: %i\n", summary.counts.directories);
+			printf("\Number of files: %i\n", summary.counts.files);
 		}
 		else
 		{
@@ -47,11 +52,6 @@ int main(int argc, char** argv)
 	{
 		printf("Incorrect command! Run with --help for more information.\n");					
 	}
-	
-    printf("This program has %d arguments: \n", argc);
-	for (int i = 0; i < argc; ++i)
-	{
-		printf("%s\n", argv[i]);
-	}*/
+    */
 	return 0;
 }

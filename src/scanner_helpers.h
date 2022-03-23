@@ -5,17 +5,18 @@
 
 void printDirectoryDriver(const char* dirName);
 
-void printDirectory(tinydir_dir dir, int level);
+void printDirectory(tinydir_dir dir, unsigned int level);
 
-void scanDirectory();
+struct dirSummary scanDirectory(tinydir_dir dir);
 
-unsigned int countDirDepth();
+// "static" keyword indicates that this function can only be used in it own object file.
+static unsigned int countDirDepth();
 
-unsigned int countNumberOfFiles();
+static unsigned int countNumberOfFiles();
 
-unsigned int countNumberOfDirs();
+static unsigned int countNumberOfDirs();
 
-void serialize();
+void serialize(struct dirSummary summary);
 
 void printHelp();
 

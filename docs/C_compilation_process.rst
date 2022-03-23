@@ -15,7 +15,8 @@ after the #include directive)
 Compiling
 ----------
 
-The output of the preprocessor is converted into assembly language.
+The output of the preprocessor is converted into assembly language. The output of this step are
+`object files <https://stackoverflow.com/a/7718363>`_.
 
 Assembling
 -----------
