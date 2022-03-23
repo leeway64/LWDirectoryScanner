@@ -29,12 +29,14 @@ You can also build LWDirectoryScanner on your own machine.
    - If you are using a Windows machine, compile the binary with
      ``cl /EHsc src/main.c src/scanner_helpers.c @conanbuildinfo.args /link /out:bin/LWDirectoryScanner.exe``
 
-	 - The file ``conanbuildinfo.args`` is created from the ``compiler_args`` generator in the
-	   conanfile; ``conanbuildinfo.args`` contains command line arguments for ``gcc``, ``clang``,
-	   and ``cl``. This allows the use of the previous compilers in compiling the program.
-	
-	 - Refer to `this guide <docs/C_compilation_process.rst>`_ for more information on what exactly
-	   happens when a C program is compiled.
+     - When using ``cl``, remember to use the ``x64`` version.
+
+ - The file ``conanbuildinfo.args`` is created from the ``compiler_args`` generator in the
+   conanfile; ``conanbuildinfo.args`` contains command line arguments for ``gcc``, ``clang``,
+   and ``cl``. This allows the use of the previous compilers in compiling the program.
+
+ - Refer to `this guide <docs/C_compilation_process.rst>`_ for more information on what exactly
+   happens when a C program is compiled.
 
 
 +-----------------------------------------------------------------------------------------+
@@ -43,6 +45,8 @@ You can also build LWDirectoryScanner on your own machine.
 | To create a new Conan profile, use the command ``conan profile new <ProfileName>``.     |
 |                                                                                         |
 | Recall that all Conan profiles can be found at ``<userhome>/.conan/profiles``.          |
+|                                                                                         |
+| conan remove <package_name> uninstalls that package.                                    |
 +-----------------------------------------------------------------------------------------+
 
 
