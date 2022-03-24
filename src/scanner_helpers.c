@@ -3,26 +3,13 @@
 
 #include "scanner_helpers.h"
 
-// This is a struct of structs
-// typedef simplifies syntax for declaring variables
-typedef struct dirSummary
-{
-    unsigned int deepestDepth;
-    struct counts  // I declare a new struct here...
-    {
-        unsigned int files;
-        unsigned int directories;
-    } counts;  // But I'm initializing a new variable here.
-
-} dirSummary;
-
 void printDirectoryDriver(const char* dirName)
 {
     tinydir_dir dir;
     int open_dir_success = tinydir_open(&dir, dirName) != -1;
     if (!open_dir_success)
     {
-        printf("That file or directory does not exist");
+        printf("That directory does not exist\n");
     }
     else
     {
@@ -66,7 +53,7 @@ void printDirectory(tinydir_dir dir, unsigned int level)
     }
 }
 
-struct dirSummary scanDirectory(tinydir_dir dir)
+dirSummary scanDirectory(tinydir_dir dir)
 {
     // "register" keyword tells compiler to store variable in CPU instead of in memory. This allows
     // for faster access.
@@ -151,6 +138,6 @@ void printHelp()
 {
 	printf("Usage: LWDirectoryScanner [OPTIONS]\n");
 	printf("Options:\n");
-	printf("    <DIRECTORY>           Scans <DIRECTORY> and serializes a summary of the directory statistics into a CBOR file.");
-	printf("    --tree <DIRECTORY>    Print out the contents of <DIRECTORY>.");
+	printf("    <DIRECTORY>           Scans <DIRECTORY> and serializes a summary of the directory statistics into a CBOR file.\n");
+	printf("    --tree <DIRECTORY>    Print out the contents of <DIRECTORY>.\n");
 }
