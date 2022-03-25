@@ -24,13 +24,13 @@ void printDirectory(tinydir_dir dir, unsigned int level);
 dirSummary scanDirectory(tinydir_dir dir);
 
 // "static" keyword indicates that this function can only be used in it own object file.
-static unsigned int countDirDepth();
+static unsigned int countDirDepth(tinydir_dir dir);
 
-static unsigned int countNumberOfFiles();
+static unsigned int countNumberOfFiles(tinydir_dir dir);
 
-static unsigned int countNumberOfDirs();
+static unsigned int countNumberOfDirs(tinydir_dir dir);
 
-void serialize(struct dirSummary summary);
+void serializeSummary(const dirSummary summary);
 
 void printHelp();
 
