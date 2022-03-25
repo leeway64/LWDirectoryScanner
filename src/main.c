@@ -23,7 +23,7 @@ int main(int argc, char** argv)
             break;
         }
         case 2: {
-            char *secondArgument = argv[1];
+            const char *secondArgument = argv[1];
 
             tinydir_dir dir;
             signed int open_dir = tinydir_open(&dir, secondArgument);
@@ -32,8 +32,9 @@ int main(int argc, char** argv)
             } else if (open_dir != -1) {
                 // "scanDirectoryPointer" is a function pointer. I can use function pointers to
                 // pass functions as parameters to other functions.
-                dirSummary (*scanDirectoryPointer)(tinydir_dir dir) = scanDirectory;
-                dirSummary summary = scanDirectoryPointer(dir);
+                dirSummary (*scanDirectoryPointer)(const char* dirName) = scanDirectory;
+                dirSummary summary = scanDirectoryPointer(secondArgument);
+
                 printf("Directory selected: %s\n", secondArgument);
                 printf("\tDeepest folder depth: %i\n", summary.deepestDepth);
                 printf("\tNumber of directories: %i\n", summary.counts.directories);
@@ -41,6 +42,8 @@ int main(int argc, char** argv)
             } else {
                 printf("That directory does not exist\n");
             }
+
+            tinydir_close(&dir);
             break;
         }
         default:

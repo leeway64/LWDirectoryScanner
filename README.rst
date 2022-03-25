@@ -72,6 +72,7 @@ In the root directory of this project, run:
 
 .. code-block::
 
+    $ pip install -r requirements.txt
     $ .venv/Scripts/activate
     $ pytest
 
