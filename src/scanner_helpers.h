@@ -18,20 +18,28 @@ typedef volatile struct dirSummary
 } dirSummary;
 
 
+/// Print the directory in a tree-like format.
+/// @param dirName is the name of the directory to print.
 void printDirectoryDriver(const char* dirName);
 
-void printDirectory(tinydir_dir dir, unsigned int level);
+// "static" keyword indicates that this function can only be used in its own object file.
+static void printDirectory(tinydir_dir dir, unsigned int level);
 
+/// Analyze a directory, finding the number of files and directories in it, along with the deepest
+/// directory depth.
+/// @param dirName is the name of the directory to scan.
 dirSummary scanDirectory(const char* dirName);
 
-// "static" keyword indicates that this function can only be used in it own object file.
-static unsigned int countDirDepth(tinydir_dir dir);
+unsigned int countDirDepth(tinydir_dir dir);
 
-static unsigned int countFiles(tinydir_dir dir);
+unsigned int countFiles(tinydir_dir dir);
 
-static unsigned int countDirs(tinydir_dir dir);
+unsigned int countDirs(tinydir_dir dir);
 
-void serializeSummary(const dirSummary summary);
+/// Serialize the summary of the directory and write the summary to a CBOR file.
+/// @param summary is the dirSummary struct that holds the summary.
+/// @param outputFile is the name of the .cbor file to be created.
+void serializeSummary(const dirSummary summary, const char* outputFile);
 
 void printHelp();
 

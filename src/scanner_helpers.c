@@ -19,7 +19,7 @@ void printDirectoryDriver(const char* dirName)
     tinydir_close(&dir);
 }
 
-void printDirectory(tinydir_dir dir, unsigned int level)
+static void printDirectory(tinydir_dir dir, unsigned int level)
 {
     tinydir_dir original_dir = dir;
     while (dir.has_next)
@@ -55,7 +55,6 @@ void printDirectory(tinydir_dir dir, unsigned int level)
 
 dirSummary scanDirectory(const char* dirName)
 {
-
     // "register" keyword tells compiler to store variable in CPU instead of in memory. This allows
     // for faster access.
     register dirSummary summary;
@@ -82,46 +81,16 @@ dirSummary scanDirectory(const char* dirName)
     summary.counts.files = files;
     tinydir_close(&tinydir3);
 
-    //    serializeSummary(summary);
     return summary;
 }
 
-static unsigned int countDirDepth(tinydir_dir dir)
+unsigned int countDirDepth(tinydir_dir dir)
 {
-//    tinydir_dir original_dir = dir;
-//    while (dir.has_next)
-//    {
-//        tinydir_file file;
-//        tinydir_readfile(&dir, &file);
-//        if (strcmp(file.name, ".") != 0 && strcmp(file.name, "..") != 0)
-//        {
-//            // Print indentation
-//            for (int i = 0; i < level; ++i)
-//            {
-//                printf("    ");
-//            }
-//
-//            printf("%s", file.name);
-//            if (file.is_dir)
-//            {
-//                printf("/");
-//            }
-//            printf("\n");
-//
-//            if (file.is_dir) {
-//                // Set the name of dir to the file path
-//                tinydir_open(&dir, file.path);
-//                printDirectory(dir, level + 1);
-//                // Set dir back to what it was before recursion
-//                dir = original_dir;
-//            }
-//        }
-//        tinydir_next(&dir);
-//    }
+    // TODO
     return 0;
 }
 
-static unsigned int countFiles(tinydir_dir dir)
+unsigned int countFiles(tinydir_dir dir)
 {
     unsigned int files = 0;
     tinydir_dir original_dir = dir;
@@ -150,7 +119,7 @@ static unsigned int countFiles(tinydir_dir dir)
     return files;
 }
 
-static unsigned int countDirs(tinydir_dir dir)
+unsigned int countDirs(tinydir_dir dir)
 {
     unsigned int directories = 0;
     tinydir_dir original_dir = dir;
@@ -175,7 +144,7 @@ static unsigned int countDirs(tinydir_dir dir)
     return directories;
 }
 
-void serializeSummary(const dirSummary summary)
+void serializeSummary(const dirSummary summary, const char* outputFile)
 {
 	// Preallocate the map structure
 	cbor_item_t * root = cbor_new_definite_map(3);
@@ -196,16 +165,22 @@ void serializeSummary(const dirSummary summary)
             .value = cbor_move(cbor_build_uint64(summary.counts.files))
     });
 
-    //Output: `length` bytes of data in the `buffer`
+    // Output: `length` bytes of data in the `buffer`
+    // Write the map to a .cbor file
 	unsigned char * buffer;
 	size_t buffer_size,
 		length = cbor_serialize_alloc(root, &buffer, &buffer_size);
 
-	fwrite(buffer, 1, length, stdout);
+    FILE * writeFile = fopen(outputFile, "w");
+
+    fwrite(buffer, 1, length, writeFile);
 	free(buffer);
 
-	fflush(stdout);
+	fflush(writeFile);
 	cbor_decref(&root);
+
+
+    printf("Serialization complete: Directory summary has been serialized into %s\n", outputFile);
 }
 
 void printHelp()

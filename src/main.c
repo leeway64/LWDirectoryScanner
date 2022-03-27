@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 {
     switch(argc)
     {
-        case 3: {
+        case 3: {  // Print out the directory in a tree-like format
             char *secondArgument = argv[1];
             char *directory = argv[2];
             if (!strcmp(secondArgument, treeCommand)) {
@@ -22,7 +22,8 @@ int main(int argc, char** argv)
             }
             break;
         }
-        case 2: {
+
+        case 2: {  // Either summarize and serialize the directory or print the help message
             const char *secondArgument = argv[1];
 
             tinydir_dir dir;
@@ -36,9 +37,15 @@ int main(int argc, char** argv)
                 dirSummary summary = scanDirectoryPointer(secondArgument);
 
                 printf("Directory selected: %s\n", secondArgument);
-                printf("\tDeepest folder depth: %i\n", summary.deepestDepth);
                 printf("\tNumber of directories: %i\n", summary.counts.directories);
-                printf("\tNumber of files: %i\n", summary.counts.files);
+                printf("\tNumber of files: %i\n\n", summary.counts.files);
+                // TODO
+//                printf("\tDeepest folder depth: %i\n", summary.deepestDepth);
+
+                tinydir_file file;
+                tinydir_file_open(&file, secondArgument);
+                strcat(file.name, "_summary.cbor");
+                serializeSummary(summary, file.name);
             } else {
                 printf("That directory does not exist\n");
             }

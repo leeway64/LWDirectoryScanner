@@ -21,3 +21,6 @@ cmake-build-debug/
 
 # Unity Test library
 Unity/
+
+# CBOR files
+*.cbor
