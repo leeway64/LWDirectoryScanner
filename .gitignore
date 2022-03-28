@@ -15,12 +15,7 @@ graph_info.json
 .venv/
 __pycache__/
 
-cmake-build-debug/
-
 .idea/
-
-# Unity Test library
-Unity/
 
 # CBOR files
 *.cbor

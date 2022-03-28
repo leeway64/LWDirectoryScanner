@@ -12,16 +12,10 @@ Usage
 Installing LWDirectoryScanner
 ------------------------------
 
-The easiest way to get LWDirectoryScanner is to download the latest binary from the
-`releases page <https://github.com/leeway64/LWDirectoryScanner/releases>`_.
-
-You can also build LWDirectoryScanner on your own machine.
-
-1. Clone this repository onto your machine.
+1. Clone this repository onto your machine using
+   ``git clone --recursive https://github.com/leeway64/LWDirectoryScanner.git``.
 
 #. In the root directory of this repository, install the Conan packages with ``conan install .``.
-
-#. Add Unity Test as a Git submodule in the root directory.
 
 #. If you are using a Linux machine, compile the binary with
    ``gcc src/main.c src/scanner_helpers.h src/scanner_helpers.c '@conanbuildinfo.args' -o bin/LWDirectoryScanner``.
@@ -68,12 +62,22 @@ Running LWDirectoryScanner Tests
 Running CBOR Deserializer Tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the root directory of this project, run:
+In the root directory of this project, if using Linux, run:
 
 .. code-block::
 
+    $ python3 -m venv .venv
+    $ source .venv/bin/activate
     $ pip install -r requirements.txt
+    $ pytest
+
+If using Windows, run:
+
+.. code-block::
+
+    $ py -3 -m venv .venv
     $ .venv/Scripts/activate
+    $ pip install -r requirements.txt
     $ pytest
 
 

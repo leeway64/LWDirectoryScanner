@@ -189,5 +189,5 @@ void printHelp()
 	printf("Options:\n");
 	printf("    <DIRECTORY>           Scans <DIRECTORY>, prints out a summary to the console, and "
            "serializes the summary of the directory statistics into a CBOR file.\n");
-	printf("    --tree <DIRECTORY>    Print out the contents of <DIRECTORY>.\n");
+	printf("    --tree <DIRECTORY>    Prints out the contents of <DIRECTORY> in a tree-like structure.\n");
 }
