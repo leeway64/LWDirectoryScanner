@@ -61,19 +61,19 @@ Installing LWDirectoryScanner
 #. In the root directory of this repository, install the Conan packages with ``conan install .``.
 
 #. If you are using a Linux machine, compile the binary with
-   ``gcc src/main.c src/scanner_helpers.h src/scanner_helpers.c '@conanbuildinfo.args' -o bin/LWDirectoryScanner``.
+   ``gcc src/main.c src/scanner_helpers.c `@conanbuildinfo.args` -o bin/LWDirectoryScanner``.
    
    - If you are using a Windows machine, compile the binary with
      ``cl /EHsc src/main.c src/scanner_helpers.c @conanbuildinfo.args /link /out:bin/LWDirectoryScanner.exe``
 
      - When using ``cl``, remember to use the ``x64`` version.
 
- - The file ``conanbuildinfo.args`` is created from the ``compiler_args`` generator in the
-   conanfile; ``conanbuildinfo.args`` contains command line arguments for ``gcc``, ``clang``,
-   and ``cl``. This allows the use of the previous compilers in compiling the program.
+   - The file ``conanbuildinfo.args`` is created from the ``compiler_args`` generator in the
+     conanfile; ``conanbuildinfo.args`` contains command line arguments for ``gcc``, ``clang``,
+     and ``cl``. This allows the use of the previous compilers in compiling the program.
 
- - Refer to `this guide <docs/C_compilation_process.rst>`_ for more information on what exactly
-   happens when a C program is compiled.
+   - Refer to `this guide <docs/C_compilation_process.rst>`_ for more information on what exactly
+     happens when a C program is compiled.
 
 
 +-----------------------------------------------------------------------------------------+
@@ -83,7 +83,7 @@ Installing LWDirectoryScanner
 |                                                                                         |
 | Recall that all Conan profiles can be found at ``<userhome>/.conan/profiles``.          |
 |                                                                                         |
-| conan remove <package_name> uninstalls <package_name>.                                  |
+| ``conan remove <package_name>`` uninstalls ``<package_name>```.                         |
 +-----------------------------------------------------------------------------------------+
 
 
@@ -93,7 +93,8 @@ Running Tests
 Running LWDirectoryScanner Tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. If you are using a Linux machine, compile the test binary with ````.
+1. If you are using a Linux machine, compile the test binary with
+   ``gcc src/scanner_helpers.c Unity/src/unity.c tests/test_suite.c @conanbuildinfo.args -o tests/test_suite``.
    
    - If you are using a Windows machine, compile the test binary with
      ``cl /EHsc src/scanner_helpers.c Unity/src/unity.c tests/test_suite.c @conanbuildinfo.args /link /out:tests/test_suite.exe``.

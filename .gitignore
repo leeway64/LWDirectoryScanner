@@ -17,5 +17,7 @@ __pycache__/
 
 .idea/
 
+cmake-build-*
+
 # CBOR files
 *.cbor
