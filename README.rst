@@ -1,13 +1,56 @@
 LWDirectoryScanner
 ==================
 
-LWDirectoryScanner is a C CLI for analyzing the contents of a given directory.
+LWDirectoryScanner is a C CLI for analyzing the contents of a given directory. It can also
+serialize a summary of the directory into a CBOR file.
 
 Example
 --------
 
+.. code-block::
+
+    $ LWDirectoryScanner --tree ../tests/test_dirs
+
+    Directory selected: ../tests/test_dirs/
+        0/
+        a/
+            test.txt
+        b/
+            main.cpp
+            main.py
+        c/
+            c1/
+                c2/
+                    c3/
+                        header.hpp
+            d1/
+                Spreadsheet.ods
+
+
+
+    $ LWDirectoryScanner ../tests/test_dirs
+
+    Directory selected: ../tests/test_dirs
+            Number of directories: 8
+            Number of files: 5
+
+    Serialization complete: Directory summary has been serialized into test_dirs_summary.cbor
+
+
+Notice that ``LWDirectoryScanner ../tests/test_dirs`` will create a CBOR file containing the number
+of directories, the number of files, etc., contained in ``../tests/test_dirs``.
+
+
 Usage
 -------
+
+.. code-block::
+
+    Usage: LWDirectoryScanner [OPTIONS]
+    Options:
+        <DIRECTORY>           Scans <DIRECTORY>, prints out a summary to the console, and serializes the summary of the directory statistics into a CBOR file.
+        --tree <DIRECTORY>    Prints out the contents of <DIRECTORY> in a tree-like structure.
+
 
 Installing LWDirectoryScanner
 ------------------------------
@@ -40,7 +83,7 @@ Installing LWDirectoryScanner
 |                                                                                         |
 | Recall that all Conan profiles can be found at ``<userhome>/.conan/profiles``.          |
 |                                                                                         |
-| conan remove <package_name> uninstalls that package.                                    |
+| conan remove <package_name> uninstalls <package_name>.                                  |
 +-----------------------------------------------------------------------------------------+
 
 
