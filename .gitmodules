@@ -1,3 +1,6 @@
 [submodule "Unity"]
 	path = Unity
 	url = https://github.com/ThrowTheSwitch/Unity.git
+[submodule "c-vector"]
+	path = c-vector
+	url = https://github.com/eteran/c-vector.git

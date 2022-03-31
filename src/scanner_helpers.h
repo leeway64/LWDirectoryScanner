@@ -2,6 +2,7 @@
 #define LWDIRECTORYSCANNER_SCANNER_HELPERS_H
 
 #include <tinydir.h>
+#include "../c-vector/cvector.h"
 
 // This is a struct of structs
 // "typedef" simplifies syntax for declaring variables
@@ -35,6 +36,8 @@ unsigned int countDirDepth(tinydir_dir dir);
 unsigned int countFiles(tinydir_dir dir);
 
 unsigned int countDirs(tinydir_dir dir);
+
+unsigned int vectorMax(cvector_vector_type(unsigned int) vector);
 
 /// Serialize the summary of the directory and write the summary to a CBOR file.
 /// @param summary is the dirSummary struct that holds the summary.

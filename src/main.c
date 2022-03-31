@@ -38,9 +38,8 @@ int main(int argc, char** argv)
 
                 printf("Directory selected: %s\n", secondArgument);
                 printf("\tNumber of directories: %i\n", summary.counts.directories);
-                printf("\tNumber of files: %i\n\n", summary.counts.files);
-                // TODO
-//                printf("\tDeepest folder depth: %i\n", summary.deepestDepth);
+                printf("\tNumber of files: %i\n", summary.counts.files);
+                printf("\tDeepest folder depth: %i\n\n", summary.deepestDepth);
 
                 tinydir_file file;
                 tinydir_file_open(&file, secondArgument);

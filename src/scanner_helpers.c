@@ -2,6 +2,8 @@
 #include <cbor.h>
 
 #include "scanner_helpers.h"
+#define CVECTOR_LOGARITHMIC_GROWTH
+#include "../c-vector/cvector.h"
 
 void printDirectoryDriver(const char* dirName)
 {
@@ -60,7 +62,8 @@ dirSummary scanDirectory(const char* dirName)
     register dirSummary summary;
 
     tinydir_dir tinydir1;
-    tinydir_open(&tinydir1, dirName);
+    // Need to use tinydir_open_sorted to use dir1.n_files
+    tinydir_open_sorted(&tinydir1, dirName);
 
     tinydir_dir tinydir2;
     tinydir_open(&tinydir2, dirName);
@@ -84,10 +87,67 @@ dirSummary scanDirectory(const char* dirName)
     return summary;
 }
 
+void exploreDirDepths(tinydir_dir dir, cvector_vector_type(unsigned int) depthsVector,
+                              unsigned int currentDepth)
+{
+    currentDepth = currentDepth + 1;
+    tinydir_dir original_dir = dir;
+
+    if (dir.n_files == 2)
+    {
+        cvector_push_back(depthsVector, currentDepth);
+    }
+    else
+    {
+        for (int n = 0; n < dir.n_files; ++n)
+        {
+            tinydir_file file;
+            tinydir_readfile_n(&dir, &file, n);
+            if (strcmp(file.name, ".") != 0 && strcmp(file.name, "..") != 0)
+            {
+                if (file.is_dir) {
+                    tinydir_open(&dir, file.path);
+
+                    exploreDirDepths(dir, depthsVector, currentDepth);
+                    dir = original_dir;
+                }
+            }
+        }
+    }
+}
+
+unsigned int vectorMax(cvector_vector_type(unsigned int) vector)
+{
+    unsigned int* iter;
+    unsigned int maximum = 0;
+    for (iter = cvector_begin(vector); iter != cvector_end(vector); ++iter)
+    {
+        if (*iter > maximum)
+        {
+            maximum = *iter;
+        }
+    }
+    return maximum;
+}
+
 unsigned int countDirDepth(tinydir_dir dir)
 {
-    // TODO
-    return 0;
+    cvector_vector_type(int) depthsVector = NULL;
+    unsigned int currentDepth = 0;
+    exploreDirDepths(dir, depthsVector, currentDepth);
+
+    unsigned int maximum = vectorMax(depthsVector);
+
+//    unsigned int* iter;
+//    printf("vector: \n");
+//    for (iter = cvector_begin(depthsVector); iter != cvector_end(depthsVector); ++iter)
+//    {
+//        printf("%i\n", *iter);
+//    }
+
+    cvector_free(depthsVector);
+
+    return maximum;
 }
 
 unsigned int countFiles(tinydir_dir dir)
