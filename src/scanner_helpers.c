@@ -87,15 +87,49 @@ dirSummary scanDirectory(const char* dirName)
     return summary;
 }
 
-void exploreDirDepths(tinydir_dir dir, cvector_vector_type(unsigned int) depthsVector,
-                              unsigned int currentDepth)
+unsigned int countDirsCurrentDirectory(tinydir_dir dir, const char* dirName)
 {
-    currentDepth = currentDepth + 1;
+    unsigned int directories = 0;
+    tinydir_dir currentDirectory;
+    tinydir_open_sorted(&currentDirectory, dirName);
+    for (int n = 0; n < currentDirectory.n_files; n++)
+    {
+        tinydir_file file;
+        tinydir_readfile_n(&currentDirectory, &file, n);
+        if (strcmp(file.name, ".") != 0 && strcmp(file.name, "..") != 0) {
+            if (file.is_dir)
+            {
+                directories++;
+            }
+        }
+    }
+    tinydir_close(&currentDirectory);
+    return directories;
+}
+
+// Need to pass depthsVector by reference by passing in a pointer to depthsVector.
+void exploreDirDepths(tinydir_dir dir, cvector_vector_type(unsigned int)* depthsVector,
+                              unsigned int* currentDepth)
+{
+    *currentDepth = *currentDepth + 1;
     tinydir_dir original_dir = dir;
 
-    if (dir.n_files == 2)
+    tinydir_file test;
+    tinydir_readfile(&dir, &test);
+
+    printf("file.path: %s\n", test.path);
+    printf("dir.n_files: %d\n", dir.n_files);
+//    printf("current depth: %d\n", currentDepth);
+//    if (countDirsCurrentDirectory(dir, file.path) == 0)
+    if (countDirs(dir) == 0)
     {
-        cvector_push_back(depthsVector, currentDepth);
+        cvector_push_back(*depthsVector, *currentDepth);
+//        unsigned int* iter;
+//        printf("vector: \n");
+//        for (iter = cvector_begin(*depthsVector); iter != cvector_end(*depthsVector); ++iter)
+//        {
+//            printf("%i\n", *iter);
+//        }
     }
     else
     {
@@ -105,8 +139,9 @@ void exploreDirDepths(tinydir_dir dir, cvector_vector_type(unsigned int) depthsV
             tinydir_readfile_n(&dir, &file, n);
             if (strcmp(file.name, ".") != 0 && strcmp(file.name, "..") != 0)
             {
+//                printf("file path: %s\n", file.path);
                 if (file.is_dir) {
-                    tinydir_open(&dir, file.path);
+                    tinydir_open_sorted(&dir, file.path);
 
                     exploreDirDepths(dir, depthsVector, currentDepth);
                     dir = original_dir;
@@ -116,7 +151,7 @@ void exploreDirDepths(tinydir_dir dir, cvector_vector_type(unsigned int) depthsV
     }
 }
 
-unsigned int vectorMax(cvector_vector_type(unsigned int) vector)
+unsigned int vectorMax(cvector_vector_type(unsigned int)vector)
 {
     unsigned int* iter;
     unsigned int maximum = 0;
@@ -133,17 +168,17 @@ unsigned int vectorMax(cvector_vector_type(unsigned int) vector)
 unsigned int countDirDepth(tinydir_dir dir)
 {
     cvector_vector_type(int) depthsVector = NULL;
+
     unsigned int currentDepth = 0;
-    exploreDirDepths(dir, depthsVector, currentDepth);
+    exploreDirDepths(dir, &depthsVector, &currentDepth);
 
     unsigned int maximum = vectorMax(depthsVector);
-
-//    unsigned int* iter;
-//    printf("vector: \n");
-//    for (iter = cvector_begin(depthsVector); iter != cvector_end(depthsVector); ++iter)
-//    {
-//        printf("%i\n", *iter);
-//    }
+    unsigned int* iter;
+    printf("vector afterwards: \n");
+    for (iter = cvector_begin(depthsVector); iter != cvector_end(depthsVector); ++iter)
+    {
+        printf("%i\n", *iter);
+    }
 
     cvector_free(depthsVector);
 
