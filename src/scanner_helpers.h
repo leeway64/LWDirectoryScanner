@@ -39,8 +39,6 @@ unsigned int countDirs(tinydir_dir dir);
 
 unsigned int vectorMax(cvector_vector_type(unsigned int) vector);
 
-unsigned int countDirsCurrentDirectory(tinydir_dir dir);
-
 /// Serialize the summary of the directory and write the summary to a CBOR file.
 /// @param summary is the dirSummary struct that holds the summary.
 /// @param outputFile is the name of the .cbor file to be created.
