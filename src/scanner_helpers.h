@@ -18,6 +18,7 @@ typedef volatile struct dirSummary
     } counts;  // But I'm initializing a new variable here.
 } dirSummary;
 
+extern cvector_vector_type(unsigned int) depthsVector;
 
 /// Print the directory in a tree-like format.
 /// @param dirName is the name of the directory to print.

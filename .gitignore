@@ -19,5 +19,5 @@ __pycache__/
 
 cmake-build-*
 
-# CBOR files
-*.cbor
+# CBOR files in the bin folder
+bin/*.cbor

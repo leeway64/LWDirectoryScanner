@@ -5,7 +5,7 @@
 #define CVECTOR_LOGARITHMIC_GROWTH
 #include "../c-vector/cvector.h"
 
-extern cvector_vector_type(unsigned int) depthsVector = NULL;
+cvector_vector_type(unsigned int) depthsVector = NULL;
 
 void printDirectoryDriver(const char* dirName)
 {
@@ -88,7 +88,6 @@ dirSummary scanDirectory(const char* dirName)
     return summary;
 }
 
-
 void exploreDirDepths(tinydir_dir dir, unsigned int currentDepth)
 {
     tinydir_dir original_dir = dir;
@@ -130,7 +129,6 @@ unsigned int countDirDepth(tinydir_dir dir)
     unsigned int currentDepth = 1;
     exploreDirDepths(dir, currentDepth);
     unsigned int maximum = vectorMax(depthsVector);
-    cvector_free(depthsVector);
 
     return maximum;
 }

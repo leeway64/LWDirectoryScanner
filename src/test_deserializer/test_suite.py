@@ -13,6 +13,7 @@ class TestSuite:
         deserial = CBOR_deserializer("src/test_deserializer/CBOR_test_files/0_summary.cbor")
         summary = deserial.deserialized_data
 
+        assert summary["deepest_depth"] == 0
         assert summary["directories"] == 0
         assert summary["files"] == 0
 
@@ -20,6 +21,7 @@ class TestSuite:
         deserial = CBOR_deserializer("src/test_deserializer/CBOR_test_files/b_summary.cbor")
         summary = deserial.deserialized_data
 
+        assert summary["deepest_depth"] == 0
         assert summary["directories"] == 0
         assert summary["files"] == 2
 
@@ -27,6 +29,7 @@ class TestSuite:
         deserial = CBOR_deserializer("src/test_deserializer/CBOR_test_files/c_summary.cbor")
         summary = deserial.deserialized_data
 
+        assert summary["deepest_depth"] == 3
         assert summary["directories"] == 4
         assert summary["files"] == 2
 
@@ -34,5 +37,6 @@ class TestSuite:
         deserial = CBOR_deserializer("src/test_deserializer/CBOR_test_files/test_dirs_summary.cbor")
         summary = deserial.deserialized_data
 
+        assert summary["deepest_depth"] == 4
         assert summary["directories"] == 8
         assert summary["files"] == 5

@@ -33,6 +33,7 @@ Example
     Directory selected: ../tests/test_dirs
             Number of directories: 8
             Number of files: 5
+            Deepest folder depth: 4
 
     Serialization complete: Directory summary has been serialized into test_dirs_summary.cbor
 

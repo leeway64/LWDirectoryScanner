@@ -117,8 +117,7 @@ void test_c(void)
 
 void test_test_dirs(void)
 {
-    printf("hello\n");
-    char * dirName = "./test_dirs/";
+    char * dirName = "./test_dirs";
     tinydir_dir tinydir1;
     tinydir_open(&tinydir1, dirName);
 
@@ -135,11 +134,11 @@ void test_test_dirs(void)
     summaryTest.deepestDepth = depth;
     summaryTest.counts.directories = d;
     summaryTest.counts.files = f;
-//
-//    TEST_ASSERT_TRUE(summaryTest.deepestDepth == 4);
-//    TEST_ASSERT_TRUE(summaryTest.counts.files == 5);
-//    TEST_ASSERT_TRUE(summaryTest.counts.directories == 8);
-    TEST_ASSERT_TRUE(8 == 8);
+
+    TEST_ASSERT_TRUE(summaryTest.deepestDepth == 4);
+    TEST_ASSERT_TRUE(summaryTest.counts.files == 5);
+    TEST_ASSERT_TRUE(summaryTest.counts.directories == 8);
+
     tinydir_close(&tinydir1);
     tinydir_close(&tinydir2);
     tinydir_close(&tinydir3);
@@ -154,5 +153,6 @@ int main(void) {
     RUN_TEST(test_c);
     RUN_TEST(test_test_dirs);
 
+    cvector_free(depthsVector);
     return UNITY_END();
 }

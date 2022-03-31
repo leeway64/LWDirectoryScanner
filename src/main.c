@@ -55,5 +55,7 @@ int main(int argc, char** argv)
         default:
             printf("Too few arguments! Run with --help for more information.\n");
     }
-	return 0;
+    cvector_free(depthsVector);
+
+    return 0;
 }
