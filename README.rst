@@ -84,7 +84,7 @@ Installing LWDirectoryScanner
 |                                                                                         |
 | Recall that all Conan profiles can be found at ``<userhome>/.conan/profiles``.          |
 |                                                                                         |
-| ``conan remove <package_name>`` uninstalls ``<package_name>```.                         |
+| ``conan remove <package_name>`` uninstalls ``<package_name>``.                          |
 +-----------------------------------------------------------------------------------------+
 
 
