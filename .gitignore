@@ -19,5 +19,10 @@ __pycache__/
 
 cmake-build-*
 
-# CBOR files in the bin folder
-bin/*.cbor
+# Ignore all files in the bin folder except for gitkeep
+bin/
+!bin/.gitkeep
+
+# Ignore test executable
+tests/test_suite
+
