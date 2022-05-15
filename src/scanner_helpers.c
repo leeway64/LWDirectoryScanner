@@ -131,6 +131,7 @@ unsigned int countDirDepth(tinydir_dir dir)
     exploreDirDepths(dir, currentDepth);
     unsigned int maximum = vectorMax(depthsVector);
 
+    cvector_free(depthsVector);
     return maximum;
 }
 
@@ -190,23 +191,38 @@ unsigned int countDirs(tinydir_dir dir)
 
 void serializeSummary(const dirSummary summary, const char* outputFile)
 {
-	// Preallocate the map structure
+    // Turn the summary struct's values into strings. This is because, for example, if I try to
+    // write the integer 10 to a file, it gets treated as a new line character.
+    unsigned int deepestDepth = summary.deepestDepth;
+    unsigned int directories = summary.counts.directories;
+    unsigned int files = summary.counts.files;
+
+    char depthString[33];
+    char directoriesString[33];
+    char filesString[33];
+
+    sprintf(depthString, "%i", deepestDepth);
+    sprintf(directoriesString, "%i", directories);
+    sprintf(filesString, "%i", files);
+
+
+    // Preallocate the map structure
 	cbor_item_t * root = cbor_new_definite_map(3);
 
     //Add the directory summary
 	cbor_map_add(root, (struct cbor_pair) {
 		.key = cbor_move(cbor_build_string("deepest_depth")),
-		.value = cbor_move(cbor_build_uint64(summary.deepestDepth))
+		.value = cbor_move(cbor_build_string(depthString))
 	});
 
     cbor_map_add(root, (struct cbor_pair) {
             .key = cbor_move(cbor_build_string("directories")),
-            .value = cbor_move(cbor_build_uint64(summary.counts.directories))
+            .value = cbor_move(cbor_build_string(directoriesString))
     });
 
     cbor_map_add(root, (struct cbor_pair) {
             .key = cbor_move(cbor_build_string("files")),
-            .value = cbor_move(cbor_build_uint64(summary.counts.files))
+            .value = cbor_move(cbor_build_string(filesString))
     });
 
     // Output: `length` bytes of data in the `buffer`
@@ -231,7 +247,7 @@ void printHelp()
 {
 	printf("Usage: LWDirectoryScanner [OPTIONS]\n");
 	printf("Options:\n");
-	printf("    <DIRECTORY>           Scans <DIRECTORY>, prints out a summary to the console, and "
-           "serializes the summary of the directory statistics into a CBOR file.\n");
+	printf("    <DIRECTORY>           Scans <DIRECTORY>, prints out a summary of the directory to the console, and "
+           "serializes the summary into a CBOR file.\n");
 	printf("    --tree <DIRECTORY>    Prints out the contents of <DIRECTORY> in a tree-like structure.\n");
 }

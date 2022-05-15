@@ -4,54 +4,6 @@ LWDirectoryScanner
 LWDirectoryScanner is a C CLI for analyzing the contents of a given directory. It can also
 serialize a summary of the directory into a CBOR file.
 
-Example
---------
-
-.. code-block::
-
-    $ LWDirectoryScanner --tree ../tests/test_dirs
-
-    Directory selected: ../tests/test_dirs/
-        0/
-        a/
-            test.txt
-        b/
-            main.cpp
-            main.py
-        c/
-            c1/
-                c2/
-                    c3/
-                        header.hpp
-            d1/
-                Spreadsheet.ods
-
-
-
-    $ LWDirectoryScanner ../tests/test_dirs
-
-    Directory selected: ../tests/test_dirs
-            Number of directories: 8
-            Number of files: 5
-            Deepest folder depth: 4
-
-    Serialization complete: Directory summary has been serialized into test_dirs_summary.cbor
-
-
-Notice that ``LWDirectoryScanner ../tests/test_dirs`` will create a CBOR file containing the number
-of directories, the number of files, etc., contained in ``../tests/test_dirs``.
-
-
-Usage
--------
-
-.. code-block::
-
-    Usage: LWDirectoryScanner [OPTIONS]
-    Options:
-        <DIRECTORY>           Scans <DIRECTORY>, prints out a summary to the console, and serializes the summary of the directory statistics into a CBOR file.
-        --tree <DIRECTORY>    Prints out the contents of <DIRECTORY> in a tree-like structure.
-
 
 Installing LWDirectoryScanner
 ------------------------------
@@ -63,11 +15,12 @@ Installing LWDirectoryScanner
 
 #. If you are using a Linux machine, compile the binary with
    ``gcc src/main.c src/scanner_helpers.c `@conanbuildinfo.args` -o bin/LWDirectoryScanner``.
-   
+
    - If you are using a Windows machine, compile the binary with
      ``cl /EHsc src/main.c src/scanner_helpers.c @conanbuildinfo.args /link /out:bin/LWDirectoryScanner.exe``
 
-     - When using ``cl``, remember to use the ``x64`` version.
+     - When using ``cl``, use the ``x64`` version. This can be easily done through the x64 Native
+       Tools Command Prompt.
 
    - The file ``conanbuildinfo.args`` is created from the ``compiler_args`` generator in the
      conanfile; ``conanbuildinfo.args`` contains command line arguments for ``gcc``, ``clang``,
@@ -86,6 +39,63 @@ Installing LWDirectoryScanner
 |                                                                                         |
 | ``conan remove <package_name>`` uninstalls ``<package_name>``.                          |
 +-----------------------------------------------------------------------------------------+
+
+
+Usage
+-------
+
+.. code-block::
+
+    $ cd bin
+    $ LWDirectoryScanner --help
+
+    Usage: LWDirectoryScanner [OPTIONS]
+    Options:
+        <DIRECTORY>           Scans <DIRECTORY>, prints out a summary of the directory to the console, and serializes the summary into a CBOR file.
+        --tree <DIRECTORY>    Prints out the contents of <DIRECTORY> in a tree-like structure.
+
+
+Example
+--------
+
+.. code-block::
+
+    $ LWDirectoryScanner --tree ../tests/test_dirs
+
+    Directory selected: ../tests/test_dirs/
+        .test_editorconfig
+        a/
+            test.txt
+        b/
+            main.cpp
+            main.py
+        c/
+            c1/
+                Document.rtf
+            test.js
+        e/
+            d1/
+                Spreadsheet.ods
+            e1/
+                e2/
+                    CMakeLists.txt
+                    e3/
+                        header.hpp
+                    test_html.html
+
+
+    $ LWDirectoryScanner ../tests/test_dirs
+
+    Directory selected: ../tests/test_dirs
+            Number of directories: 9
+            Number of files: 10
+            Deepest folder depth: 4
+
+    Serialization complete: Directory summary has been serialized into test_dirs_summary.cbor
+
+
+Notice that ``LWDirectoryScanner ../tests/test_dirs`` will create a CBOR file containing the number
+of directories, the number of files, etc., contained in ``../tests/test_dirs``.
 
 
 Running Tests
@@ -133,3 +143,4 @@ Third-Party Tools
 - `libcbor <https://github.com/PJK/libcbor>`_ (MIT License): C library for serializing and deserializing CBOR files.
 - `tinydir <https://github.com/cxong/tinydir>`_ (BSD-2-Clause): C directory and file reader.
 - `Unity Test <https://github.com/ThrowTheSwitch/Unity>`_ (MIT License): C unit testing framework.
+- `c-vector <https://github.com/eteran/c-vector>`_ (MIT License): An implementation of a C++ std::vector in C.
