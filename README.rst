@@ -106,12 +106,13 @@ Running LWDirectoryScanner Tests
 
 1. If you are using a Linux machine, compile the test binary with
    ``gcc src/scanner_helpers.c Unity/src/unity.c tests/test_suite.c @conanbuildinfo.args -o tests/test_suite``.
-   
+
    - If you are using a Windows machine, compile the test binary with
      ``cl /EHsc src/scanner_helpers.c Unity/src/unity.c tests/test_suite.c @conanbuildinfo.args /link /out:tests/test_suite.exe``.
 
-#. To run the test binary, enter ```` if using Linux. If using Windows, enter ``cd tests``, then
-   ``test_suite``.
+#. To run the test binary, enter ```` if using Linux.
+
+   - If using Windows, enter ``cd tests``, then ``test_suite``.
 
 
 Running CBOR Deserializer Tests
