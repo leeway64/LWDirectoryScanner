@@ -9,34 +9,34 @@ class TestSuite:
         deserial.CBOR_file_name = "test1.cbor"
         assert deserial.CBOR_file_name == "test1.cbor"
 
-    def test_0(self):
-        deserial = CBOR_deserializer("src/test_deserializer/CBOR_test_files/0_summary.cbor")
-        summary = deserial.deserialized_data
-
-        assert summary["deepest_depth"] == 0
-        assert summary["directories"] == 0
-        assert summary["files"] == 0
-
     def test_b(self):
         deserial = CBOR_deserializer("src/test_deserializer/CBOR_test_files/b_summary.cbor")
         summary = deserial.deserialized_data
 
-        assert summary["deepest_depth"] == 0
-        assert summary["directories"] == 0
-        assert summary["files"] == 2
+        assert summary["deepest_depth"] == str(0)
+        assert summary["directories"] == str(0)
+        assert summary["files"] == str(2)
 
     def test_c(self):
         deserial = CBOR_deserializer("src/test_deserializer/CBOR_test_files/c_summary.cbor")
         summary = deserial.deserialized_data
 
-        assert summary["deepest_depth"] == 3
-        assert summary["directories"] == 4
-        assert summary["files"] == 2
+        assert summary["deepest_depth"] == str(1)
+        assert summary["directories"] == str(1)
+        assert summary["files"] == str(2)
+
+    def test_e(self):
+        deserial = CBOR_deserializer("src/test_deserializer/CBOR_test_files/e_summary.cbor")
+        summary = deserial.deserialized_data
+
+        assert summary["deepest_depth"] == str(3)
+        assert summary["directories"] == str(4)
+        assert summary["files"] == str(4)
 
     def test_test_dirs(self):
         deserial = CBOR_deserializer("src/test_deserializer/CBOR_test_files/test_dirs_summary.cbor")
         summary = deserial.deserialized_data
 
-        assert summary["deepest_depth"] == 4
-        assert summary["directories"] == 8
-        assert summary["files"] == 5
+        assert summary["deepest_depth"] == str(4)
+        assert summary["directories"] == str(9)
+        assert summary["files"] == str(10)
