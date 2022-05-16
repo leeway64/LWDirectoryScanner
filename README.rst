@@ -109,6 +109,8 @@ Example
 Notice that ``LWDirectoryScanner ../tests/test_dirs`` will create a CBOR file containing the number
 of directories, the number of files, etc., contained in ``../tests/test_dirs``.
 
+You may deserialize this CBOR file using the included `deserializer <src/CBOR_Deserializer.py>`_
+
 
 Running Tests
 --------------
@@ -143,19 +145,19 @@ In the root directory of this project, if using Linux, run:
 
 .. code-block::
 
-    $ python3 -m venv .venv
-    $ source .venv/bin/activate
-    $ pip install -r requirements.txt
-    $ pytest
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install -r requirements.txt
+    pytest
 
 If using Windows, run:
 
 .. code-block::
 
-    $ py -3 -m venv .venv
-    $ .venv/Scripts/activate
-    $ pip install -r requirements.txt
-    $ pytest
+    py -3 -m venv .venv
+    .venv/Scripts/activate
+    pip install -r requirements.txt
+    pytest
 
 
 Third-Party Tools

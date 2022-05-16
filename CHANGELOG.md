@@ -9,11 +9,15 @@ this project follows [semantic versioning](https://semver.org/).
 
 - None
 
-## [1.0.1] - 2022-5-
-### Added
+## [1.0.1] - 2022-5-15
+### Changed
 
-- 
+- Serialize integer values into strings
+- Update LWDirectoryScanner and CBOR_Deserializer tests
+- Heavily reformat README
+
 
 ## [1.0.0] - 2022-4-4
 
 - First release
+
