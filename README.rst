@@ -1,6 +1,11 @@
 LWDirectoryScanner
 ==================
 
+.. image:: https://img.shields.io/badge/license-MIT-red.svg
+    :target: LICENSE.txt
+.. image:: https://img.shields.io/github/v/release/leeway64/LWDirectoryScanner
+    :alt: GitHub release (latest by date)
+
 LWDirectoryScanner is a C CLI for analyzing the contents of a given directory. It can also
 serialize a summary of the directory into a CBOR file.
 
