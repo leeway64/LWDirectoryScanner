@@ -165,6 +165,18 @@ If using Windows, run:
     pytest
 
 
+Printing the logo
+------------------
+
+To manually print the LWDirectoryScanner logo yourself, run:
+
+.. code-block::
+    
+    cd docs
+    bash LWDirectoryScanner.logo.printer.sh
+
+
+
 Third-Party Tools
 -----------------
 

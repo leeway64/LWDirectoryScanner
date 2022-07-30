@@ -6,5 +6,5 @@
 |______\/  \/   |_____/|_|_|  \___|\___|\__\___/|_|   \__, |_____/ \___\__,_|_| |_|_| |_|\___|_|
                                                        __/ |
                                                       |___/
-
-This logo was created with http://www.network-science.de/ascii/ using the "big" font.
+This logo was created with the ASCII generator http://www.network-science.de/ascii/ using the "big"
+font.
