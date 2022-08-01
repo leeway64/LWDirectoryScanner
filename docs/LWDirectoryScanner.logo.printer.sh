@@ -32,6 +32,7 @@ done
 
 # Arrays in Bash
 bottom_border1=("=" "=" "=" "=" "=")
+# Print every element in the bottom_border1 array 1 element at a time
 for j in "${bottom_border1[@]}"
 do
    printf "$j"
@@ -39,8 +40,11 @@ done
 
 
 bottom_border2=("=")
-# Print every element in the bottom_border2 array
+# Print every element in the bottom_border2 array all at once
 printf ${bottom_border2[*]}
+
+
+# if statements in Bash
 
 
 # The echo command prints its arguments to the terminal

@@ -24,7 +24,8 @@ LWDirectoryScanner
 
 
 LWDirectoryScanner is a C CLI for analyzing the contents of a given directory. It can also
-serialize a summary of the directory into a CBOR file.
+serialize a summary of the directory into a CBOR file. A
+`deserializer <docs/cbor-deserializer-usage.asciidoc>`_ is provided to deserialize this CBOR file.
 
 
 Installing LWDirectoryScanner
@@ -131,7 +132,9 @@ Example
 Notice that ``LWDirectoryScanner ../tests/test_dirs`` will create a CBOR file containing the number
 of directories, the number of files, etc., contained in ``../tests/test_dirs``.
 
-You may deserialize this CBOR file using the included `deserializer <src/CBOR_Deserializer.py>`_
+You may deserialize this CBOR file using the included `CBORDeserializer <src/CBORDeserializer.py>`_.
+Refer to `this document <docs/cbor-deserializer-usage.asciidoc>`_ for deserializer usage
+information.
 
 
 Running Tests

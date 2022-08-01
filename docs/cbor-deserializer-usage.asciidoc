@@ -1,0 +1,16 @@
+== CBOR Deserializer Usage ==
+
+[source, python]
+----
+# First, instantiate a CBORDeserializer object
+deserial = CBORDeserializer("src/test_deserializer/CBOR_test_files/e_summary.cbor")
+
+# Notice that the CBOR_file_name field can be changed
+deserial.CBOR_file_name = "src/test_deserializer/CBOR_test_files/test_dirs_summary.cbor"
+
+# The deserialized data is returned as a dictionary
+summary = deserial.deserialized_data
+assert summary["deepest_depth"] == str(4)
+assert summary["directories"] == str(9)
+assert summary["files"] == str(10)
+----

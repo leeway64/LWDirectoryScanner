@@ -1,6 +1,7 @@
 import cbor2
 
-class CBOR_deserializer:
+
+class CBORDeserializer:
     def __init__(self, file_name=None):
         self._CBOR_file_name = file_name
         self._deserialized_data = None
