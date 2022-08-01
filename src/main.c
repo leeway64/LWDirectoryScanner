@@ -20,6 +20,9 @@ int main(int argc, char** argv)
             } else {
                 printf("Incorrect command! Run with --help for more information.\n");
             }
+            // Free the memory pointed to by the pointers to prevent a memory leak
+            free(secondArgument);
+            free(directory);
             break;
         }
 
@@ -45,6 +48,7 @@ int main(int argc, char** argv)
                 tinydir_file_open(&file, secondArgument);
                 strcat(file.name, "_summary.cbor");
                 serializeSummary(summary, file.name);
+                free(directory);
             } else {
                 printf("That directory does not exist\n");
             }

@@ -45,7 +45,10 @@ printf ${bottom_border2[*]}
 
 
 # if statements in Bash
-
+# If the directory exists, then execute the code in the if block
+if [ -d "$../" ]; then
+    printf "="
+fi
 
 # The echo command prints its arguments to the terminal
 echo "="

@@ -245,9 +245,17 @@ void serializeSummary(const dirSummary summary, const char* outputFile)
 
 void printHelp()
 {
-	printf("Usage: LWDirectoryScanner [OPTIONS]\n");
+    char * first_line;
+    // Dynamically allocate memory
+    first_line = malloc(64 * sizeof(char));
+    strcpy(first_line, "Usage: LWDirectoryScanner [OPTIONS]");
+
+	printf("%s\n", first_line);
 	printf("Options:\n");
 	printf("    <DIRECTORY>           Scans <DIRECTORY>, prints out a summary of the directory to the console, and "
            "serializes the summary into a CBOR file.\n");
 	printf("    --tree <DIRECTORY>    Prints out the contents of <DIRECTORY> in a tree-like structure.\n");
+
+    // Release the memory held by the first_line pointer
+    free(first_line);
 }
