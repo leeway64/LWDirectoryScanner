@@ -205,4 +205,5 @@ Third-Party Tools
 - `tinydir <https://github.com/cxong/tinydir>`_ (BSD-2-Clause): C directory and file reader.
 - `Unity Test <https://github.com/ThrowTheSwitch/Unity>`_ (MIT License): C unit testing framework.
 - `c-vector <https://github.com/eteran/c-vector>`_ (MIT License): An implementation of a C++ std::vector in C.
-- `ASCII Generator <http://www.network-science.de/ascii/>`_: The ASCII generator used to create the logo.
+- `ASCII Generator <http://www.network-science.de/ascii/>`_: The ASCII generator used to create the
+  logo; specifically, the logo is drawn using the ``big`` font.
