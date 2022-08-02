@@ -6,16 +6,17 @@ this project follows [semantic versioning](https://semver.org/).
 
 
 ## Unreleased
+- None
+
+
+## [1.1.0] - 2022-8-1
 ### Added
 - Badges for license and version
 - An LWDirectoryScanner logo, and a Bash script for printing it
 - Usage examples for the CBORDeserializer
 
 ### Changed
-- Fix memory leaks
-
-
-## [1.1.0] - 2022-8-
+- Dynamically allocate first line of help message
 
 
 ## [1.0.1] - 2022-5-15
