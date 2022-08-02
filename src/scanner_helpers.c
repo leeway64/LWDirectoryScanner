@@ -245,9 +245,8 @@ void serializeSummary(const dirSummary summary, const char* outputFile)
 
 void printHelp()
 {
-    char * first_line;
     // Dynamically allocate memory
-    first_line = malloc(64 * sizeof(char));
+    char * first_line = malloc(64 * sizeof(char));
     strcpy(first_line, "Usage: LWDirectoryScanner [OPTIONS]");
 
 	printf("%s\n", first_line);
@@ -256,6 +255,7 @@ void printHelp()
            "serializes the summary into a CBOR file.\n");
 	printf("    --tree <DIRECTORY>    Prints out the contents of <DIRECTORY> in a tree-like structure.\n");
 
-    // Release the memory held by the first_line pointer
+    // Release the memory held by the first_line pointer. I can only use free on memory that has
+    // been allocated with malloc.
     free(first_line);
 }

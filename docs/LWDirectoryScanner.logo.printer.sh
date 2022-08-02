@@ -22,7 +22,7 @@ cat LWDirectoryScanner.logo.txt | head -$line_number
 
 
 # While loops in Bash
-n=93
+n=88
 while [ $n -gt 0 ];
 do
     printf "="
@@ -46,8 +46,9 @@ printf ${bottom_border2[*]}
 
 # if statements in Bash
 # If the directory exists, then execute the code in the if block
-if [ -d "$../" ]; then
-    printf "="
+DIR=/home
+if [ -d "$DIR" ]; then
+    printf "====="
 fi
 
 # The echo command prints its arguments to the terminal
