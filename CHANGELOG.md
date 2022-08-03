@@ -9,6 +9,11 @@ this project follows [semantic versioning](https://semver.org/).
 - None
 
 
+## [1.1.1] - 2022-8-2
+### Added
+- `pip install conan` command to README
+
+
 ## [1.1.0] - 2022-8-1
 ### Added
 - Badges for license and version

@@ -37,7 +37,7 @@ If you are using a Linux machine:
 
     git clone --recursive https://github.com/leeway64/LWDirectoryScanner.git
     cd LWDirectoryScanner
-    pip install conan
+    sudo pip install conan
     conan install . -s compiler.version=10
     gcc src/main.c src/scanner_helpers.c @conanbuildinfo.args -o bin/LWDirectoryScanner
 
@@ -48,6 +48,7 @@ If you are using a Windows machine:
 
     git clone --recursive https://github.com/leeway64/LWDirectoryScanner.git
     cd LWDirectoryScanner
+    pip install conan
     conan install .
     cl /EHsc src/main.c src/scanner_helpers.c @conanbuildinfo.args /link /out:bin/LWDirectoryScanner.exe
 
